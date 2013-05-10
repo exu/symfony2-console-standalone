@@ -1,0 +1,3 @@
+* Using Symfony2 Console Component as standalone.
+
+Look in source Luke!
