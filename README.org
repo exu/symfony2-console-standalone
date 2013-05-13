@@ -6,7 +6,7 @@ All files are located on My GitHub project: [[https://github.com/exu/symfony2-co
 
 To use symfony console you should create =composer.json= file and add =symfony/console= component
 
-#+begin_src json
+```
 {
     "autoload": {
         "psr-0": {"": "src/"}
@@ -16,7 +16,7 @@ To use symfony console you should create =composer.json= file and add =symfony/c
         "symfony/console": "dev-master"
     }
 }
-#+end_src
+```
 
 You should replace "=dev-master=" to current stable version (I'm trying whats new in development branch).
 
