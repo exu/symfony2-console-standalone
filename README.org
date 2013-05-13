@@ -1,6 +1,9 @@
 ** Using Symfony2 Console as standalone component.
 
-http://wysocki.org.pl/assets/img/sf2-console-component.png
+#+ATTR_HTML: title="Google.com"
+[[https://www.google.com][http://wysocki.org.pl/assets/img/sf2-console-component.png]]
+
+
 
 All files are located on My GitHub project: [[https://github.com/exu/symfony2-console-standalone][Symfony2 Console as standalone component]]
 
