@@ -1,4 +1,4 @@
-* Using Symfony2 Console Component as standalone.
+** Using Symfony2 Console as standalone component.
 
 http://wysocki.org.pl/assets/img/sf2-console-component.png
 
