@@ -1,12 +1,12 @@
 * Using Symfony2 Console Component as standalone.
 
-http://wysocki.org.pl/assets/img/sf2-console-component.png]]
+http://wysocki.org.pl/assets/img/sf2-console-component.png
 
 All files are located on My GitHub project: [[https://github.com/exu/symfony2-console-standalone][Symfony2 Console as standalone component]]
 
 To use symfony console you should create =composer.json= file and add =symfony/console= component
 
-```
+=
 {
     "autoload": {
         "psr-0": {"": "src/"}
@@ -16,7 +16,7 @@ To use symfony console you should create =composer.json= file and add =symfony/c
         "symfony/console": "dev-master"
     }
 }
-```
+=
 
 You should replace "=dev-master=" to current stable version (I'm trying whats new in development branch).
 
@@ -26,9 +26,9 @@ you can change it to other dir (in =composer.json=)
 
 
 Next run
-#+begin_src sh
+=
 $ composer update
-#+end_src
+=
 
 to install dependencies in your new project.
 
@@ -38,7 +38,7 @@ Next thing to do is Your new shiny command loader.
 Put it in =bin/console= file - or whatever you want - but if you change
 directory position remember that you should adjust your paths
 
-#+begin_src php
+=
 #!/usr/bin/env php
 <?php
 
@@ -60,12 +60,11 @@ foreach(glob(__DIR__ . '/../src/Command/*Command.php') as $FileName) {
 }
 
 $app->run();
-#+end_src
-
+=
 
 Finally create your new command file (src) for example:
 
-#+begin_src php
+=
 <?php
 /**
  * @author    Jacek Wysocki <jacek.wysocki@gmail.com>
@@ -91,7 +90,7 @@ class Test2Command extends Command
         $output->writeln("nothing <info>nothing</info> <error>nothing</error>");
     }
 }
-#+end_src
+=
 
 Thats all, command loader should detect this file and load it. You can use your command by running
 =php bin/console say:nothing=.
@@ -103,7 +102,7 @@ directory try save content below as =src/Command/TestCommand.php=
 
 
 
-#+begin_src php
+=
 <?php
 /**
  * @author    Jacek Wysocki <jacek.wysocki@gmail.com>
@@ -145,13 +144,13 @@ class TestCommand extends Command
         $output->writeln("$text in green '<info>$text</info>' and in red: <error>$text</error>");
     }
 }
-#+end_src
+=
 
 and then run:
 
-#+begin_src sh
+=
 bin/console say:mynamebitch Jacek
-#+end_src
+=
 
 You will get some nice colorized output.
 
