@@ -4,155 +4,30 @@ http://wysocki.org.pl/assets/img/sf2-console-component.png
 
 All files are located on My GitHub project: [[https://github.com/exu/symfony2-console-standalone][Symfony2 Console as standalone component]]
 
-To use symfony console you should create =composer.json= file and add =symfony/console= component
-
-=
-{
-    "autoload": {
-        "psr-0": {"": "src/"}
-    },
-
-    "require": {
-        "symfony/console": "dev-master"
-    }
-}
-=
-
+To use symfony console you should create =[[https://github.com/exu/symfony2-console-standalone/blob/master/composer.json][composer.json]]= file and add =symfony/console= component
 You should replace "=dev-master=" to current stable version (I'm trying whats new in development branch).
 
 I'm using composer autoloader, so in this example all classes will be loaded from =src= directory,
 you can change it to other dir (in =composer.json=)
 
-
-
-Next run
-=
-$ composer update
-=
-
-to install dependencies in your new project.
-
+Next run =$ composer update= to install dependencies in your new project.
 
 
 Next thing to do is Your new shiny command loader.
 Put it in =bin/console= file - or whatever you want - but if you change
-directory position remember that you should adjust your paths
+directory position remember that you should adjust your paths [[https://github.com/exu/symfony2-console-standalone/blob/master/bin/console][details in console file]]
 
-=
-#!/usr/bin/env php
-<?php
-
-date_default_timezone_set('UTC');
-
-set_time_limit(0);
-
-(@include_once __DIR__ . '/../vendor/autoload.php') || @include_once __DIR__ . '/../../../autoload.php';
-
-use Symfony\Component\Console\Application;
-
-$app = new Application('Sample Console Component Based Application', '6.6.6');
-
-foreach(glob(__DIR__ . '/../src/Command/*Command.php') as $FileName) {
-    $className = "Command\\" . rtrim(basename($FileName), ".php");
-    $app->addCommands(array(
-        new $className,
-    ));
-}
-
-$app->run();
-=
-
-Finally create your new command file (src) for example:
-
-=
-<?php
-/**
- * @author    Jacek Wysocki <jacek.wysocki@gmail.com>
- */
-namespace Command;
-
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-
-class Test2Command extends Command
-{
-    protected function configure()
-    {
-        $this
-            ->setName('say:nothing')
-            ->setDescription('Says nothing');
-        ;
-    }
-
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $output->writeln("nothing <info>nothing</info> <error>nothing</error>");
-    }
-}
-=
+Finally create your new command [[https://github.com/exu/symfony2-console-standalone/blob/master/src/Command/Test2Command.php][file (src) for example]]:
 
 Thats all, command loader should detect this file and load it. You can use your command by running
 =php bin/console say:nothing=.
 
-
-
 You can put other commands in =src/Command=
-directory try save content below as =src/Command/TestCommand.php=
-
-
-
-=
-<?php
-/**
- * @author    Jacek Wysocki <jacek.wysocki@gmail.com>
- */
-
-namespace Command;
-
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
-
-class TestCommand extends Command
-{
-    protected function configure()
-    {
-        $this
-            ->setName('say:mynamebitch')
-            ->setDescription('Greet someone with colors')
-            ->addArgument('name', InputArgument::OPTIONAL, 'Who do you want to greet?')
-            ->addOption('yell', null, InputOption::VALUE_NONE, 'If set, the task will yell in uppercase letters')
-        ;
-    }
-
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $name = $input->getArgument('name');
-        if ($name) {
-            $text = 'Hello '.$name;
-        } else {
-            $text = 'Hello';
-        }
-
-        if ($input->getOption('yell')) {
-            $text = strtoupper($text);
-        }
-
-        $output->writeln("$text in green '<info>$text</info>' and in red: <error>$text</error>");
-    }
-}
-=
+directory try save content below as =[[https://github.com/exu/symfony2-console-standalone/blob/master/src/Command/TestCommand.php][src/Command/TestCommand.php]]=
 
 and then run:
-
-=
-bin/console say:mynamebitch Jacek
-=
+=bin/console say:mynamebitch Jacek=
 
 You will get some nice colorized output.
 
-
-Enjoy!
+*** Enjoy!
