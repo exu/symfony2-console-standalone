@@ -2,29 +2,38 @@ README
 ======
 
 ### 1) Using Symfony2 Console as standalone component.
-  ![Symfony2 console component](http://wysocki.org.pl/assets/img/sf2-console-component.png)
-  All files are located on My GitHub project: [Symfony2 Console as standalone
+![Symfony2 console component](http://wysocki.org.pl/assets/img/sf2-console-component.png)
+
+
+ All files are located on My GitHub project: [Symfony2 Console as standalone
 component]
+
+
   To use symfony console you should create [composer.json] file and add
 symfony/console component
   You should replace "dev-master" to current stable version (I'm trying whats
 new in development branch).
-  I'm using composer autoloader, so in this example all classes will be
-loaded from src directory,
-  you can change it to other dir (in composer.json)
-  Next run $ composer update to install dependencies in your new project.
+
+I'm using composer autoloader, so in this example all classes will be
+loaded from src directory, you can change it to other dir (in composer.json)
+
+  Next run  ```$ composer update```  to install dependencies in your new project.
   Next thing to do is Your new shiny command loader.
+
+
   Put it in bin/console file - or whatever you want - but if you change
   directory position remember that you should adjust your paths [details in
 console file]
+
+
   Finally create your new command [file (src) for example]:
-  Thats all, command loader should detect this file and load it. You can use
-your command by running
-  php bin/console say:nothing.
-  You can put other commands in src/Command
-  directory try save content below as [src/Command/TestCommand.php]
-  and then run:
-  bin/console say:mynamebitch Jacek
+  Thats all, command loader should detect this file and load it. You can use your command by running
+  ```php bin/console say:nothing```
+
+  You can put other commands in ```src/Command```
+  directory try save content below as [src/Command/TestCommand.php] and then run:
+  ```bin/console say:mynamebitch Jacek```
+
   You will get some nice colorized output.
 
   [http://wysocki.org.pl/assets/img/sf2-console-component.png]: https://www.google.com
