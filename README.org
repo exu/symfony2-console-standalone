@@ -1,7 +1,7 @@
 ** Using Symfony2 Console as standalone component.
 
 #+ATTR_HTML: title="Google.com"
-[[https://www.google.com][http://wysocki.org.pl/assets/img/sf2-console-component.png]]
+[[http://wysocki.in/assets/img/sf2-console-component.png]]
 
 
 
