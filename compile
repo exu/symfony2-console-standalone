@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+$phar = new Phar('roles-validator.phar', 0, 'roles-validator.phar');
+
+$phar->buildFromIterator(
+    new RecursiveIteratorIterator(new RecursiveDirectoryIterator(getcwd(), FilesystemIterator::CURRENT_AS_SELF)),
+    __DIR__
+);
+
+$phar->setStub($phar->createDefaultStub('bin/console'));
