@@ -1,6 +1,7 @@
 #!/usr/bin/env php
 <?php
-$phar = new Phar('roles-validator.phar', 0, 'roles-validator.phar');
+$appName = isset($argv[1]) ? $argv[1] : array_pop(explode('/', getcwd()));
+$phar = new Phar($appName . '.phar', 0, $appName . '.phar');
 
 $phar->buildFromIterator(
     new RecursiveIteratorIterator(new RecursiveDirectoryIterator(getcwd(), FilesystemIterator::CURRENT_AS_SELF)),
